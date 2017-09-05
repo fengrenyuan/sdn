@@ -1,0 +1,16 @@
+#graphs, #logic{
+	height: 400px;
+}
+#logic{
+	padding:1% 5%;
+	border-top: 1px solid #ddd;
+}
+#graphs svg.topo, #logic svg.graph{
+	height: 390px;
+}
+#logic svg.graph{
+	width: 100%;
+}
+#logic div:nth-child(2){
+	border-left: 1px solid #aaa;
+}

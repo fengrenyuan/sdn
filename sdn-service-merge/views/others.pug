@@ -1,0 +1,63 @@
+doctype html
+html(lang="zh-cn")
+	head
+		title="业务融合演示-"+abbre
+		meta(charset='utf-8')
+		link(rel='stylesheet' type='text/css' href='/css/style.css')
+		script(src='/js/jquery-1.12.4.min.js')
+		script(src='/js/d3.min.js')
+		script(src='/js/others.js')
+		script(src='/js/jquery.easing.min.js')
+		link(rel='stylesheet' type='text/css' href='/css/font-awesome.min.css')
+		
+	body
+		#sidebar
+			#tab
+				a.logo(href='#') 超能陆战队
+			#tab
+				a(href='/firewall') Firewall
+			if title == 'Admin 3: Billing'
+				#tab
+					a(href='/balance') Load Balance
+				#tab.highlight
+					a(href='/billing') Billing
+			else
+				#tab.highlight
+					a(href='/balance') Load Balance
+				#tab
+					a(href='/billing') Billing
+			#tab
+				a(href='/merged') Merge Results
+			#tab
+				a(href='/show') Experiments
+			button#merge_b
+				i.fa.fa-rocket(aria-hidden=true)
+				!="Merge!"
+			button#terminal
+				i.fa.fa-wrench(aria-hidden=true)
+				="Terminal"
+		
+		#container
+			header
+				span=title
+
+			#graphs
+				.width50
+					svg.topo
+				.width50
+					if title == 'Admin 3: Billing'
+						img(src="/img/billing.png" style="margin-top: 70px;")
+					else
+						img(src="/img/balance.png" style="height: 640px;")
+
+			#start
+				if active
+					p
+						span="开启"+abbre
+						span.shift(style="background-color: limegreen")
+							span.button(style="margin-right: 31px")
+				else
+					p
+						span="开启"+abbre
+						span.shift
+							span.button

@@ -1,0 +1,54 @@
+<html>
+  <head>
+  <title>Video Streaming Demonstration</title>
+    <style>
+    h1 {text-align:center;}
+    .center {
+        clear:both;
+        display:block;
+        margin:auto;
+    }
+    </style>
+  </head>
+  <body>
+    <script>
+        window.onload=leave();
+        function create(){
+            var xmlHttp;
+            if (window.XMLHttpRequest) {
+                xmlHttp = new XMLHttpRequest();
+                if (xmlHttp.overrideMineType)
+                    xmlHttp.overrideMineType("text/xml");
+            } else if (window.ActiveXObject) { 
+                try {
+                    xmlHttp = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e) {
+                    try {
+                        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                    } catch (e) {
+                    }
+                }
+            }
+            return xmlHttp;
+        }
+        function leave() {
+            //var n = window.event.screenX-window.screenLeft;
+            //var b = n > document.documentElement.scrollWidth-20;
+            //if((b && window.event.clientY<0 || window.event.altKey)){
+            xmlHttp = create();
+            var url = "/leave";
+            xmlHttp.open("GET",url,false);
+            //xmlHttp.onreadystatechange = callback;
+            xmlHttp.setRequestHeader("Content-type","application/x-www-form-urlencoded;");
+            xmlHttp.send();
+            alert("Are you sure to leave?");
+            //http.open("GET","localhost:5000/leave",false);
+            //http.send();
+            //send to '/leave'
+            //}
+        }
+    </script>
+    <h1>Video Streaming Demonstration {{ name }}</h1>
+    <img class="center" src="{{ url_for('video_feed') }}">
+  </body>
+</html>
